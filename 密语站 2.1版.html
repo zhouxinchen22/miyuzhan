@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密语站</title>
+    <style>
+        /* 导航容器 */
+        nav {
+            background-color: #f5f5f5;
+            padding: 12px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 导航项 */
+        .nav-item {
+            margin-right: 30px;
+            position: relative;
+        }
+        /* 导航链接 */
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-link:hover {
+            background-color: #e0e0e0;
+        }
+        /* 不可用页面样式 */
+        .unavailable-page {
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .unavailable-title {
+            color: red;
+            font-size: xx-large;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .unavailable-desc {
+            color: #666;
+            font-size: large;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+        /* 主页内容样式 */
+        .home-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        p {
+            line-height: 1.8;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-menu">
+            <div class="nav-item">
+                <a class="nav-link" onclick="showHome()">主页</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" onclick="showSecret()">密语</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" onclick="showCustomSecret()">自制密语</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" onclick="showCommunity()">社区</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <div id="content">
+        <!-- 默认显示主页内容 -->
+        <div class="home-content">
+            <h1>欢迎来到密语站</h1>
+            <h3>世界上最小的密语交流网站（甚至不能交流）</h3>
+            <p>这是我在手机上写的第一个网站</p>
+            <p>对于怎么做这个东西还没什么思路</p>
+        </div>
+    </div>
+
+    <script>
+        function showHome() {
+            document.getElementById('content').innerHTML = `
+                <div class="home-content">
+                    <h1>欢迎来到密语站</h1>
+                    <h3>世界上最小的密语交流网站（甚至不能交流）</h3>
+                    <p>这是我在手机上写的第一个网站</p>
+                    <p>对于怎么做这个东西还没什么思路</p>
+                </div>
+            `;
+        }
+
+     function showSecret() {
+    document.getElementById('content').innerHTML = `
+        <div class="unavailable-page">
+            <div class="unavailable-title">
+                 
+            </div>
+            <div class="unavailable-desc">
+                <button onclick="showMorseTable()" 
+                        style="padding: 15px 30px; font-size: 18px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;">
+	                点我显示摩斯密码表
+                </button>
+                <div id="secretA" style="margin-top: 20px; font-size: 18px; font-family: monospace; color: #ffffff; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto; height: 300px; overflow-y: auto; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 5px;"></div>
+            </div>
+        </div>
+    `;
+}
+
+// ========== 摩斯密码表函数 ==========
+// 点按钮后在这里显示 A→.- B→-... 等
+function showMorseTable() {
+    const morseTable = [
+        'A → .-',
+        'B → -...',
+        'C → -.-.',
+        'D → -..',
+        'E → .',
+        'F → ..-.',
+        'G → --.',
+        'H → ....',
+        'I → ..',
+        'J → .---',
+        'K → -.-',
+        'L → .-..',
+        'M → --',
+        'N → -.',
+        'O → ---',
+        'P → .--.',
+        'Q → --.-',
+        'R → .-.',
+        'S → ...',
+        'T → -',
+        'U → ..-',
+        'V → ...-',
+        'W → .--',
+        'X → -..-',
+        'Y → -.--',
+        'Z → --..'
+    ];
+    
+    document.getElementById('secretA').innerHTML = morseTable.join('<br>');
+}
+
+        function showCustomSecret() {
+            document.getElementById('content').innerHTML = `
+                <div class="unavailable-page">
+                    <div class="unavailable-title">
+                        自制密语未解锁
+                    </div>
+                    <div class="unavailable-desc">
+                        <!--在这里填写功能-->
+                    </div>
+                </div>
+            `;
+        }
+
+        function showCommunity() {
+            document.getElementById('content').innerHTML = `
+                <div class="unavailable-page">
+                    <div class="unavailable-title">
+                        社区功能未解锁
+                    </div>
+                    <div class="unavailable-desc">
+                    	<!--在这里填写功能-->
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
